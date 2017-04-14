@@ -30,5 +30,5 @@ values for ids can be found in the respective files which are delimited
 by a '\\n' and are 0 indexed. The filenames mentioned above
 
 ### About the images.
-* Each image is of size `s x s`. `s` feild is explained in above section.
-* The `foreground` used is `black` and `background` is `black`.
+* Each image is of size `s x s`.  `s` field is explained in above section.
+* The `foreground` used is `black` and `background` is `transparent`.
