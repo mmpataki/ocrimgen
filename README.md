@@ -24,7 +24,8 @@ where :
 * `cid` : character id of the character in the image [charcterindex.txt]
 * `s`   : size of image in pixels. [implicit in image name]
 * `fid` : font-id of the text. [fontsindex.txt]
-* `sid` : style-id of the image. [stylesindex.txt]
+* `sid` : style-id of the image. [stylesindex.txt]  
+
 values for ids can be found in the respective files which are delimited
 by a '\\n' and are 0 indexed. The filenames mentioned above
 
