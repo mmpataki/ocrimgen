@@ -1,7 +1,8 @@
 var fsizes = [];
 var fonts = [];
 var bb;
-var prnt = "`1234567890-=qwertyuiop[]\\';lkjhgfdsazxcvbnm,./~!@#$%^&*()_+|}{POIUYTREWQASDFGHJKL:\"?><MNBVCXZ";
+//var prnt = "`1234567890-=qwertyuiop[]\\';lkjhgfdsazxcvbnm,./~!@#$%^&*()_+|}{POIUYTREWQASDFGHJKL:\"?><MNBVCXZ";
+var prnt = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var dsizes, dfonts;
 var styles = [];
 var zip;
@@ -13,6 +14,52 @@ window.onload = function() {
 	dfonts = g("fonts");
 	bb = g("blackboard");
 	zip = new JSZip();
+}
+
+function gensingleimage(lines, s, fid, sid, maxwidth) {
+
+	var c = document.createElement("canvas");
+	var x = c.getContext("2d");
+	var name = `image-${s}-${fid}-${sid}.${ext}`;
+
+	c.height = lines.length * s;
+	c.width = s * maxwidth;
+	x.font = `${styles[sid]} ${s}px ${fonts[fid]}`;
+	x.fillStyle = "#000";
+	x.textBaseline = "top";
+
+	for(var i=0; i<lines.length; i++) {
+		x.fillText(lines[i], 0, i * s);
+	}
+
+	zip.file(name, c.toDataURL().substr(c.toDataURL().indexOf(',')+1), {base64: true});
+}
+
+
+function genimageswithdata() {
+	var lines = document.getElementById("imgdata").value.split('\n');
+	var maxlen=0;
+	styles = getfstyles();
+	/* calculate max line length of the text */
+	for(var i=0; i<lines.length; i++) {
+		if(maxlen<lines[i].length)
+			maxlen=lines[i].length;
+	}
+
+	for (var i = 0; i < fonts.length; i++) {
+		for (var j = 0; j < fsizes.length; j++) {
+			for (var k = 0; k < styles.length; k++) {
+				gensingleimage(lines, fsizes[j], i, k, maxlen);
+			}
+		}
+	}
+	var zipname = g("zipname").value;
+	if(zipname == "") {
+		zipname = `dataset-${(new Date()).toLocaleString().replace(/\//g, "-")}.zip`;
+	}
+	zip.generateAsync({type:"blob"}).then(function(content) {
+		saveAs(content, zipname);
+	});
 }
 
 function g(id) { return document.getElementById(id); }

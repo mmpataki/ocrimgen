@@ -10,15 +10,15 @@
 		<div class="main-container">
 			<div class="left-panel">
 				<div class="header">
-					<h1>OCR Training set generator.</h1>
+					<center><h1>OCR Training set generator.</h1></center>
 				</div>
 				<div id="blackboard">
-					<br/><br/><br/><br/><br/><br/><br/><br/>
+					<br/><br/><br/><br/><br/><br/>
 					<p class="help">Add the character-size, font-family, style to the dataset characteristics and press Generate to download the zipfile. It may take some time to generate the images depending on the number of specifications you add. Your browser may even complain of unresponsive script but allow the script to continue and be patient.</p>
 				</div>
 			</div>
-			<div class="right-panel">
-				<br/><br/>
+			<div class="middle-panel">
+				<br/><br/><br/><br/>
 				<h2>Mention dataset specs</h2>
 				<input type="text" id="zipname" placeholder="zipfilename" /><br/>
 				<input type="number" id="fsize" placeholder="font-size" />
@@ -32,6 +32,12 @@
 				<button onclick="genzip()">Generate</button>
 				<p id="sizes"></p>
 				<p id="fonts"></p>
+			</div>
+			<div class="right-panel">
+				<br/><br/><br/><br/>
+				<h2>Generate single image.</h2>
+				<textarea id="imgdata">Put some text here to generate image with the text</textarea>
+				<button onclick="genimageswithdata()">Generate</button>
 			</div>
 		</div>
 	</body>

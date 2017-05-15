@@ -30,6 +30,12 @@ h1 {
 	padding: 10px 40px;
 	margin: 0px;
 }
+textarea {
+	margin: 5%;
+	height: 65%;
+	width: 90%;
+	margin-left: 10px;
+}
 #sizes, #fonts {
 	margin: 20px 10px;
 	width: 80%;
@@ -49,10 +55,11 @@ p, label {
 	font-style: italic;
 	font-weight: bold;
 	color: black;
-	font-size: 24px;
+	margin: auto;
+	font-size: 18px;
 }
 .header {
-	width: 70%;
+	width: 100%;
 	z-index: 1;
 	position: fixed;
 	background: #000;
@@ -71,9 +78,15 @@ p, label {
 	float: left;
 }
 .left-panel {
-	width: 70%;
+	width: 30%;
 	height: 100%;
 	float: left;
+}
+.middle-panel {
+	width: 40%;
+	height: 100%;
+	float: left;
+	background: #222;
 }
 .right-panel {
 	width: 30%;
